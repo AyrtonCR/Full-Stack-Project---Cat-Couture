@@ -1,0 +1,41 @@
+.nav {
+  width: 100%;
+  background-color: #eeeeee;
+  display: flex;
+  justify-content: space-between;
+}
+.navButton {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+.menu {
+  display: flex;
+}
+.rightLinks {
+  display: flex;
+}
+.rightLinkItems {
+  list-style-type: none;
+}
+
+.link {
+  color: black;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+.activeLink {
+  color: #0ea68c;
+}
+
+.header {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 1rem;
+}
+.header .logo {
+  font-size: 3rem;
+  margin: 2rem 0rem;
+}
