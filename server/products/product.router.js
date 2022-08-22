@@ -1,5 +1,6 @@
 const express = require("express");
 const Joi = require("joi");
+const { Pool } = require("pg");
 const router = express.Router();
 const db = require("../db");
 const queryParamValidationMiddleware = require("../middleware/queryParamValidationMiddleware");
@@ -9,24 +10,20 @@ const queryParamsSchema = Joi.object().keys({
   limit: Joi.number().integer().min(1),
 });
 
-const getProducts = async () => {
+const getPagedProductsSQL = `
+SELECT p.id, p.name, p.description, p.price, pc.name AS "categoryName", pi.name AS "imageName", pi.description AS "imageDescription"
+FROM product p
+LEFT JOIN product_category pc ON p.product_category_id = pc.id
+LEFT JOIN product_image pi ON p.product_image_id = pi.id
+ORDER BY p.id
+LIMIT $1 OFFSET $2
+`
+
+
+const getProducts = async (limit, page) => {
   try {
-    const result = await db.query(
-      `SELECT
-        p.id,
-        p.name,
-        p.description,
-        p.price,
-        pc.name AS "categoryName",
-        pi.name AS "imageName",
-        pi.description AS "imageDescription"
-      FROM product p
-      LEFT JOIN product_category pc ON p.product_category_id = pc.id
-      LEFT JOIN product_image pi ON p.product_image_id = pi.id
-      ORDER BY
-        p.id
-      `
-    );
+    const result = await db.query(getPagedProductsSQL, [limit, page]);
+    
     return result.rows;
   } catch (error) {
     throw Error(error);
@@ -37,8 +34,11 @@ router.get(
   "/",
   queryParamValidationMiddleware(queryParamsSchema),
   async (req, res, next) => {
+    
     try {
-      const products = await getProducts();
+      const { limit, page } = req.query;
+
+      const products = await getProducts(limit, page);
 
       const responseResults = {
         products,
