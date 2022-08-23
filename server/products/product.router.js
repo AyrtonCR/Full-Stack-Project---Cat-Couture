@@ -60,17 +60,13 @@ router.get(
 
       const allProducts = await getAllProducts();
       const products = await getProducts(safeLimit, safePage);
-      const pages = [
-        {
-          currentPage: safePage,
-          itemsPerPage: safeLimit,
-          totalItems: allProducts.length,
-          totalPages: Math.ceil(allProducts.length / safeLimit),
-        },
-      ];
+
       const responseResults = {
         products,
-        pages,
+        currentPage: safePage,
+        totalPages: Math.ceil(allProducts.length / safeLimit),
+        itemsPerPage: safeLimit,
+        totalItems: allProducts.length,
       };
 
       return res.json(responseResults);

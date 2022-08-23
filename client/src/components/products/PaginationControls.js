@@ -5,11 +5,14 @@ import {
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 
-const PaginationControls = ({ page, setPage, pages }) => {
-  const totalPages = pages.map((mappedPages) => {
-    return mappedPages.totalPages.toString();
-  });
-
+const PaginationControls = ({
+  page,
+  setPage,
+  currentPage,
+  totalPages,
+  itemsPerPage,
+  totalItems,
+}) => {
   const prevDisabled = page > 1 ? false : true;
   const nextDisabled = page < totalPages ? false : true;
 
@@ -36,11 +39,9 @@ const PaginationControls = ({ page, setPage, pages }) => {
             <FontAwesomeIcon icon={faChevronLeft} size="2x" />
           </button>
         </div>
-        {pages.map((page) => (
-          <span>
-            Page {page.currentPage} of {page.totalPages}
-          </span>
-        ))}
+        <span>
+          Page {currentPage} of {totalPages}
+        </span>
         <div>
           <button
             aria-label="Next page"

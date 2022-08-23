@@ -11,7 +11,10 @@ const ProductPage = () => {
   const [products, setProducts] = useState([]);
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(1);
-  const [pages, setPages] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState([]);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
+  const [totalItems, setTotalItems] = useState([]);
 
   useEffect(() => {
     // We use AbortController (https://developer.mozilla.org/en-US/docs/Web/API/AbortController)
@@ -30,7 +33,10 @@ const ProductPage = () => {
         const data = await result.json();
         if (!abortController.signal.aborted) {
           setProducts(data.products);
-          setPages(data.pages);
+          setCurrentPage(data.currentPage);
+          setTotalPages(data.totalPages);
+          setItemsPerPage(data.itemsPerPage);
+          setTotalItems(data.totalItems);
         }
       } catch (error) {
         if (!abortController.signal.aborted) {
@@ -54,9 +60,12 @@ const ProductPage = () => {
       {error && <ErrorMessage message="Error fetching products" />}
       <ProductList products={products} className="main-content" />
       <PaginationControls
-        pages={pages}
         page={page}
         setPage={setPage}
+        currentPage={currentPage}
+        totalPages={totalPages}
+        itemsPerPage={itemsPerPage}
+        totalItems={totalItems}
         className="pages"
       />
     </main>
