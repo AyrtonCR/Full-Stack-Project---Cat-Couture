@@ -65,6 +65,7 @@ router.get(
           currentPage: safePage,
           itemsPerPage: safeLimit,
           totalItems: allProducts.length,
+          totalPages: Math.ceil(allProducts.length / safeLimit),
         },
       ];
       const responseResults = {

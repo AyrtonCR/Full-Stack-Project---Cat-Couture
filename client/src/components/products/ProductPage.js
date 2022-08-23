@@ -53,7 +53,12 @@ const ProductPage = () => {
       {loading && <Loader />}
       {error && <ErrorMessage message="Error fetching products" />}
       <ProductList products={products} className="main-content" />
-      <PaginationControls pages={pages} className="pages" />
+      <PaginationControls
+        pages={pages}
+        page={page}
+        setPage={setPage}
+        className="pages"
+      />
     </main>
   );
 };
