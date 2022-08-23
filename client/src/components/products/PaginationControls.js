@@ -5,12 +5,7 @@ import {
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 
-const PaginationControls = ({
-  onPrev,
-  onNext,
-  currentPage = null,
-  totalPages = null,
-}) => {
+const PaginationControls = ({ onPrev, onNext, pages }) => {
   return (
     <div className={styles.container}>
       <div className={styles.controls}>
@@ -19,9 +14,11 @@ const PaginationControls = ({
             <FontAwesomeIcon icon={faChevronLeft} size="2x" />
           </button>
         </div>
-        <span>
-          Page {currentPage} of {totalPages}
-        </span>
+        {pages.map((page) => (
+          <span>
+            Page {page.currentPage} of {page.itemsPerPage}
+          </span>
+        ))}
         <div>
           <button aria-label="Next page" onClick={onNext}>
             <FontAwesomeIcon icon={faChevronRight} size="2x" />
