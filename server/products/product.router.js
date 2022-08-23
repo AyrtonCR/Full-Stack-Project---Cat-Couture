@@ -16,7 +16,9 @@ FROM product p
 LEFT JOIN product_category pc ON p.product_category_id = pc.id
 LEFT JOIN product_image pi ON p.product_image_id = pi.id
 ORDER BY p.id
+
 `
+
 
 const getPagedProductsSQL = `
 SELECT p.id, p.name, p.description, p.price, pc.name AS "categoryName", pi.name AS "imageName", pi.description AS "imageDescription"
@@ -25,6 +27,7 @@ LEFT JOIN product_category pc ON p.product_category_id = pc.id
 LEFT JOIN product_image pi ON p.product_image_id = pi.id
 ORDER BY p.id
 LIMIT $1 OFFSET $2
+
 `
 
 const getAllProducts = async () => {
@@ -44,6 +47,7 @@ const getProducts = async (limit, page) => {
     }
     const offset = limit * (page - 1);
     const result = await db.query(getPagedProductsSQL, [limit, offset]);   
+
     return result.rows;
   } catch (error) {
     throw Error(error);
@@ -57,6 +61,7 @@ router.get(
     
     try {
       const { limit, page } = req.query;
+
       const safeLimit = Boolean(limit) ? parseInt(limit) : 10;
       const safePage = Boolean(parseInt(page)) ? parseInt(page) : 1;
 
@@ -69,6 +74,7 @@ router.get(
         currentPage: safePage,
         itemsPerPage: safeLimit,
         totalItems: allProducts.length
+
       };
 
       return res.json(responseResults);
