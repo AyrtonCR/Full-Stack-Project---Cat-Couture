@@ -88,16 +88,6 @@ paths:
                     type: array
                     items:
                       $ref: "#/components/schemas/Report"
-                  categoryName:
-                    type: string
-                  totalProdcuts:
-                    type: integer
-                  discountedProducts:
-                    type: integer
-                required:
-                  - categoryName
-                  - totalProdcuts
-                  - discountedProducts
         "400":
           description: Bad Request
           content:
@@ -159,6 +149,11 @@ components:
           type: string
     Report:
       type: object
+      x-examples:
+        example-1:
+          categoryName: string
+          totalProducts: 0
+          discountedProducts: 0
       properties:
         categoryName:
           type: string
@@ -170,11 +165,6 @@ components:
         - categoryName
         - totalProducts
         - discountedProducts
-      x-examples:
-        example-1:
-          categoryName: string
-          totalProducts: 0
-          discountedProducts: 0
 tags:
   - name: products
     description: The data for all the cat products.
