@@ -4,6 +4,7 @@ import Loader from "../Loader";
 import ErrorMessage from "../ErrorMessage";
 import CategoriesReport from "./CategoriesReport";
 import DiscountsReport from "./DiscountReport";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const DashboardPage = () => {
   const [loading, setLoading] = useState(false);
@@ -11,6 +12,7 @@ const DashboardPage = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [categoryReports, setCategoryReport] = useState([]);
   const [discountReports, setDiscountReport] = useState([]);
+  const { getAccessTokenSilently } = useAuth0();
   // REMOVED PRODUCT AND SET PRODUCT STATE VARIABLES //
 
   useEffect(() => {
@@ -24,7 +26,8 @@ const DashboardPage = () => {
         setLoading(true);
         setError(false);
         setErrorMessage("");
-        const result = await api.getReports();
+        const accessToken = await getAccessTokenSilently();
+        const result = await api.getReports(accessToken);
         if (!result.ok) {
           const error = await result.json();
           throw new Error(error.message || "Error fetching reports");

@@ -13,5 +13,3 @@ const api = {
 };
 
 export default api;
-
-// ?limit=${limit}&page=${page}
