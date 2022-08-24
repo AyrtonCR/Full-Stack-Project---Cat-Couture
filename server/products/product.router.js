@@ -1,6 +1,6 @@
 const express = require("express");
 const Joi = require("joi");
-const { Pool } = require("pg");
+// const { Pool } = require("pg");
 const router = express.Router();
 const queryParamValidationMiddleware = require("../middleware/queryParamValidationMiddleware");
 const productRepository = require("./product.repository");
@@ -20,7 +20,7 @@ router.get(
       const safePage = parseInt(page) ? parseInt(page) : 1; // CHANGED FORM BOOLEAN TO NORMAL //
 
       const allProducts = await productRepository.getAllProducts();
-      const products = await productRepository.getProducts(limit, page);
+      const products = await productRepository.getProducts(safeLimit, safePage);
 
       const responseResults = {
         products,

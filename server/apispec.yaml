@@ -1,5 +1,12 @@
-openapi: "3.0.2"
+openapi: 3.0.2
 info:
+  license:
+    name: Apache 2.0
+    url: "https://www.apache.org/licenses/LICENSE-2.0.html"
+  contact:
+    name: My name
+    email: email@example.com
+    url: ayrton.campbell-reinheimer@developersinstitute.co.nz
   version: "1.0"
   title: Welcome to the Products API!
   description: This API allows user to handle products
@@ -23,7 +30,7 @@ paths:
           description: The number of products to return
           required: false
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -48,13 +55,13 @@ paths:
                   - totalPages
                   - itemsPerPage
                   - totalItems
-        400:
+        "400":
           description: Bad Request
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-        500:
+        "500":
           description: Internal Server Error
           content:
             application/json:
@@ -70,12 +77,39 @@ paths:
       tags:
         - reports
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 type: object
+                properties:
+                  reports:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Report"
+                  categoryName:
+                    type: string
+                  totalProdcuts:
+                    type: integer
+                  discountedProducts:
+                    type: integer
+                required:
+                  - categoryName
+                  - totalProdcuts
+                  - discountedProducts
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
 components:
   securitySchemes:
     bearerAuth:
@@ -123,5 +157,26 @@ components:
       properties:
         message:
           type: string
+    Report:
+      type: object
+      properties:
+        categoryName:
+          type: string
+        totalProducts:
+          type: integer
+        discountedProducts:
+          type: integer
+      required:
+        - categoryName
+        - totalProducts
+        - discountedProducts
+      x-examples:
+        example-1:
+          categoryName: string
+          totalProducts: 0
+          discountedProducts: 0
 tags:
   - name: products
+    description: The data for all the cat products.
+  - name: reports
+    description: The data for the authenticated users on the dashboard which shows what items are available and discounted.
