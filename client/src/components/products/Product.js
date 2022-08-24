@@ -3,6 +3,7 @@ import DiscountBadge from "./DiscountBadge";
 
 const Product = ({
   name,
+  id,
   description,
   price,
   imageName,
@@ -11,7 +12,7 @@ const Product = ({
   discountValue,
 }) => {
   return (
-    <li className={styles.product}>
+    <li className={styles.product} key={id}>
       <div className="card">
         <div>
           {imageName ? (

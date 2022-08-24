@@ -11,7 +11,7 @@ const DashboardPage = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [categoryReports, setCategoryReport] = useState([]);
   const [discountReports, setDiscountReport] = useState([]);
-  const [product, setProduct] = useState("");
+  // REMOVED PRODUCT AND SET PRODUCT STATE VARIABLES //
 
   useEffect(() => {
     // We use AbortController (https://developer.mozilla.org/en-US/docs/Web/API/AbortController)
