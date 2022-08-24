@@ -10,24 +10,29 @@ const queryParamsSchema = Joi.object().keys({
   limit: Joi.number().integer().min(1),
 });
 
+
 router.get(
   "/",
   queryParamValidationMiddleware(queryParamsSchema),
   async (req, res, next) => {
+    
     try {
       const { limit, page } = req.query;
-      const safeLimit = limit ? parseInt(limit) : 10; // CHANGED FORM BOOLEAN TO NORMAL //
-      const safePage = parseInt(page) ? parseInt(page) : 1; // CHANGED FORM BOOLEAN TO NORMAL //
+
+      const safeLimit = Boolean(limit) ? parseInt(limit) : 10;
+      const safePage = Boolean(parseInt(page)) ? parseInt(page) : 1;
+
+
 
       const allProducts = await productRepository.getAllProducts();
-      const products = await productRepository.getProducts(limit, page);
+      const products = await productRepository.getProducts(safeLimit, safePage);
 
       const responseResults = {
         products,
         currentPage: safePage,
-        totalPages: Math.ceil(allProducts.length / safeLimit),
         itemsPerPage: safeLimit,
-        totalItems: allProducts.length,
+        totalItems: allProducts.length
+
       };
 
       return res.json(responseResults);
