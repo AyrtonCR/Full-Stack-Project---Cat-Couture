@@ -15,15 +15,16 @@ describe("GIVEN that the GET /products route exist", () => {
   test("WHEN there are products THEN return status 200 and an array of products", async () => {
     const totalProducts = await productRepository.getTotalProducts();
     const defaultLimit = 10;
+    const limit = 10;
+    const page = 1;
 
     const expectedResponseData = {
-      products: await productRepository.getProducts(),
+      products: await productRepository.getProducts(limit, page),
       currentPage: 1,
-      totalPages: Math.ceil(parseInt(totalProducts) / defaultLimit),
+      totalPages: Math.ceil(totalProducts.length / defaultLimit),
       itemsPerPage: defaultLimit,
-      totalItems: totalProducts,
+      totalItems: totalProducts.length,
     };
-
     const response = await request(app)
       .get("/api/products")
       .set("Accept", "application/json");
@@ -41,9 +42,9 @@ describe("GIVEN that the GET /products route exist", () => {
     const expectedResponseData = {
       products: [],
       currentPage: page,
-      totalPages: Math.ceil(parseInt(totalProducts) / defaultLimit),
+      totalPages: Math.ceil(parseInt(totalProducts.length) / defaultLimit),
       itemsPerPage: defaultLimit,
-      totalItems: totalProducts,
+      totalItems: totalProducts.length,
     };
 
     const response = await request(app)
@@ -59,13 +60,14 @@ describe("GIVEN that the GET /products route exist", () => {
     test("WHEN the limit query parameter is valid as per the API spec THEN return status 200 and an array of products", async () => {
       const totalProducts = await productRepository.getTotalProducts();
       const limit = 1;
+      const page = 1;
 
       const expectedResponseData = {
-        products: await productRepository.getProducts(limit, 0),
+        products: await productRepository.getProducts(limit, page),
         currentPage: 1,
-        totalPages: Math.ceil(parseInt(totalProducts) / limit),
+        totalPages: Math.ceil(parseInt(totalProducts.length) / limit),
         itemsPerPage: limit,
-        totalItems: totalProducts,
+        totalItems: totalProducts.length,
       };
 
       const response = await request(app)

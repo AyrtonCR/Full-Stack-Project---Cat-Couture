@@ -1,7 +1,7 @@
 const db = require("../db");
 
 module.exports = {
-  getAllProducts: async () => {
+  getTotalProducts: async () => {
     try {
       const result = await db.query(`
       SELECT p.id, p.name, p.description, p.price, pc.name AS "categoryName", pi.name AS "imageName", pi.description AS "imageDescription"
@@ -18,9 +18,10 @@ module.exports = {
 
   getProducts: async (limit, page) => {
     try {
-      if (page <= 0 || !page) {
-        throw new Error("page number must be greater than 0");
+      if (page <= 0) {
+        throw new Error("page query number must be greater than 0");
       }
+
       const offset = limit * (page - 1);
       const result = await db.query(
         `

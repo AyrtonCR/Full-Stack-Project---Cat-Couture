@@ -19,15 +19,19 @@ router.get(
       const safeLimit = limit ? parseInt(limit) : 10; // CHANGED FORM BOOLEAN TO NORMAL //
       const safePage = parseInt(page) ? parseInt(page) : 1; // CHANGED FORM BOOLEAN TO NORMAL //
 
-      const allProducts = await productRepository.getAllProducts();
+      // if (typeof safeLimit === "number") {
+      //   res.sendStatus(400);
+      // }
+
+      const totalProducts = await productRepository.getTotalProducts();
       const products = await productRepository.getProducts(safeLimit, safePage);
 
       const responseResults = {
         products,
         currentPage: safePage,
-        totalPages: Math.ceil(allProducts.length / safeLimit),
+        totalPages: Math.ceil(totalProducts.length / safeLimit),
         itemsPerPage: safeLimit,
-        totalItems: allProducts.length,
+        totalItems: totalProducts.length,
       };
 
       return res.json(responseResults);
