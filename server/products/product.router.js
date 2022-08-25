@@ -23,8 +23,7 @@ router.get(
       const safePage = Boolean(parseInt(page)) ? parseInt(page) : 1;
 
 
-
-      // if (typeof safeLimit === "number") {
+      // if (typeof safeLimit !== "number") {
       //   res.sendStatus(400);
       // }
 
