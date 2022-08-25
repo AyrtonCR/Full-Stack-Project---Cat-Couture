@@ -24,15 +24,19 @@ router.get(
 
 
 
-      const allProducts = await productRepository.getAllProducts();
+      // if (typeof safeLimit === "number") {
+      //   res.sendStatus(400);
+      // }
+
+      const totalProducts = await productRepository.getTotalProducts();
       const products = await productRepository.getProducts(safeLimit, safePage);
 
       const responseResults = {
         products,
         currentPage: safePage,
+        totalPages: Math.ceil(totalProducts.length / safeLimit),
         itemsPerPage: safeLimit,
-        totalItems: allProducts.length
-
+        totalItems: totalProducts.length,
       };
 
       return res.json(responseResults);
