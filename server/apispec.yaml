@@ -73,7 +73,7 @@ paths:
       description: Get a list of reports
       operationId: get-reports
       security:
-        - bearerAuth: []
+        - bearerAuth: [read:reports]
       tags:
         - reports
       responses:
@@ -94,6 +94,18 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
         "500":
           description: Internal Server Error
           content:
@@ -105,6 +117,7 @@ components:
     bearerAuth:
       type: http
       scheme: bearer
+      bearerFormat: JWT
   schemas:
     Product:
       type: object
