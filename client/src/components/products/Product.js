@@ -16,12 +16,21 @@ const Product = ({
       <div className={styles.card}>
         <div>
           <div className={styles.imageContainer}>
+            <div className={styles.badgePostioner}>
+              {discountValue && discountType && (
+                <DiscountBadge
+                  className={styles.badge}
+                  discountValue={discountValue}
+                  discountType={discountType}
+                />
+              )}
+            </div>
             {imageName ? (
               <img
                 src={`./img/${imageName}`}
                 alt={imageDescription}
                 className={styles.productImage}
-              />
+              ></img>
             ) : (
               <img
                 src="./img/cat-photo-default.jpg"
@@ -30,13 +39,6 @@ const Product = ({
               />
             )}
           </div>
-          {discountValue && discountType && (
-            <DiscountBadge
-              className={styles.badge}
-              discountValue={discountValue}
-              discountType={discountType}
-            />
-          )}
         </div>
         <div className={styles.productInfoContainer}>
           <h3 className={styles.productInfo}>{name}</h3>

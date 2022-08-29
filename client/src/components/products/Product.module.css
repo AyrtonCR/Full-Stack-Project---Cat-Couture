@@ -5,21 +5,21 @@
   grid-template-rows: 1fr;
   gap: 2rem;
   margin: 1.5rem 1rem;
-  max-width: 100%;
-  box-shadow: 0rem 0.1rem 1rem -0.1rem black;
+
+  justify-content: center;
 }
 .badge {
-  position: absolute;
-  top: 0;
-  left: 0;
+  text-align: right;
+  margin-right: 1rem;
+  position: relative;
+  top: 3.4rem;
 }
-
 .addToCartButtonContainer {
   text-align: right;
   margin: 0.35rem;
 }
 .button {
-  background-color: rgb(148, 252, 110);
+  background-color: rgb(246, 243, 62);
   color: black;
   font-size: 1rem;
   width: 7rem;
@@ -30,9 +30,10 @@
 .card {
   display: grid;
   justify-content: center;
-
-  gap: 2rem;
+  max-width: 50rem;
   border: 0.1rem solid black;
+  margin: 1rem 0;
+  box-shadow: 0rem 0.1rem 1rem -0.1rem black;
 }
 
 .productImage {
@@ -53,18 +54,21 @@
 
 .productInfoContainer {
   max-width: 100%;
+  align-items: center;
+  /* justify-content: center; */
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr 1.3fr;
+  grid-template-rows: 0.5fr 0.5fr 0.5fr 1fr;
   text-align: left;
-  margin: 0 0.86rem;
+  margin: 0 1.26rem;
   padding: 0rem;
 }
 
 .productInfo {
   display: grid;
-  max-width: 100%;
+  max-width: 26.824375rem;
+  width: 100%;
   align-items: center;
   border: 0.09rem solid black;
-  margin: 0.35rem 0.5rem;
-  padding: 0.2rem;
+  margin: 0.35rem 0rem;
+  padding: 0.16rem;
 }

@@ -19,14 +19,17 @@
 }
 
 .link {
+  display: grid;
   color: black;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   padding-top: 1rem;
-  margin-right: 2rem;
+  justify-content: center;
+  margin-left: 1rem;
   padding-bottom: 1rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   text-decoration: none;
+  align-items: left;
 }
 .activeLink {
   color: #0ea68c;
@@ -38,12 +41,28 @@
   justify-content: center;
 }
 .logo {
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   border: 0.09rem solid black;
   padding: 1rem;
   box-shadow: 0 0.5rem 1rem -0.1rem black;
   text-shadow: 0.05rem 0.12rem 3.5rem;
   border-radius: 0.25rem;
+  margin-top: 2rem;
 }
 .header {
+}
+.rightLinks {
+  padding-inline-start: 0rem;
+}
+.rightLinkItems {
+  display: grid;
+  align-items: center;
+}
+
+.navButton {
+  margin: 0rem;
+  padding: 0rem;
+}
+.burger {
+  width: 3rem;
 }
