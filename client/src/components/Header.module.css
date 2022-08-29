@@ -20,10 +20,13 @@
 
 .link {
   color: black;
+  font-size: 1.1rem;
   padding-top: 1rem;
+  margin-right: 2rem;
   padding-bottom: 1rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+  text-decoration: none;
 }
 .activeLink {
   color: #0ea68c;
@@ -31,11 +34,16 @@
 
 .header {
   display: flex;
-  width: 100%;
+  max-width: 100%;
   justify-content: center;
-  margin-top: 1rem;
 }
-.header .logo {
-  font-size: 3rem;
-  margin: 2rem 0rem;
+.logo {
+  font-size: 1.8rem;
+  border: 0.09rem solid black;
+  padding: 1rem;
+  box-shadow: 0 0.5rem 1rem -0.1rem black;
+  text-shadow: 0.05rem 0.12rem 3.5rem;
+  border-radius: 0.25rem;
+}
+.header {
 }

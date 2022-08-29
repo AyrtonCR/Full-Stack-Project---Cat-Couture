@@ -13,21 +13,23 @@ const Product = ({
 }) => {
   return (
     <li className={styles.product} key={id}>
-      <div className="card">
+      <div className={styles.card}>
         <div>
-          {imageName ? (
-            <img
-              src={`./img/${imageName}`}
-              alt={imageDescription}
-              className="product-image"
-            />
-          ) : (
-            <img
-              src="./img/cat-photo-default.jpg"
-              alt="Default product cat"
-              className="product-image"
-            />
-          )}
+          <div className={styles.imageContainer}>
+            {imageName ? (
+              <img
+                src={`./img/${imageName}`}
+                alt={imageDescription}
+                className={styles.productImage}
+              />
+            ) : (
+              <img
+                src="./img/cat-photo-default.jpg"
+                alt="Default product cat"
+                className="product-image"
+              />
+            )}
+          </div>
           {discountValue && discountType && (
             <DiscountBadge
               className={styles.badge}
@@ -36,10 +38,17 @@ const Product = ({
             />
           )}
         </div>
-        <h3>{name}</h3>
-        <p>Price {price}</p>
-        <p data-testid="product-description">{description}</p>
-        <button className={styles.button}>Add to Cart</button>
+        <div className={styles.productInfoContainer}>
+          <h3 className={styles.productInfo}>{name}</h3>
+          <p className={styles.productInfo}>Price {price}</p>
+          <p data-testid="product-description" className={styles.productInfo}>
+            {description}
+          </p>
+
+          <div className={styles.addToCartButtonContainer}>
+            <button className={styles.button}>Add to Cart</button>
+          </div>
+        </div>
       </div>
     </li>
   );

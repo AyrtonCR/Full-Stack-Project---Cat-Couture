@@ -17,6 +17,7 @@ code {
 }
 .main-content {
   flex-grow: 2;
+  padding: 0;
 }
 .main-layout > * {
   max-width: 1344px;

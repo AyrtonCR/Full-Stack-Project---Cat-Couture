@@ -1,12 +1,70 @@
 .product {
   position: relative;
+  text-align: center;
+  display: grid;
+  grid-template-rows: 1fr;
+  gap: 2rem;
+  margin: 1.5rem 1rem;
+  max-width: 100%;
+  box-shadow: 0rem 0.1rem 1rem -0.1rem black;
 }
 .badge {
   position: absolute;
   top: 0;
   left: 0;
 }
+
+.addToCartButtonContainer {
+  text-align: right;
+  margin: 0.35rem;
+}
 .button {
-  background-color: black;
-  color: white;
+  background-color: rgb(148, 252, 110);
+  color: black;
+  font-size: 1rem;
+  width: 7rem;
+  padding: 0.5rem;
+  margin: 1rem 0;
+}
+
+.card {
+  display: grid;
+  justify-content: center;
+
+  gap: 2rem;
+  border: 0.1rem solid black;
+}
+
+.productImage {
+  border: 0.1rem solid black;
+  margin: 1rem;
+  max-width: 100%;
+
+  justify-self: center;
+}
+
+.imageContainer {
+  display: grid;
+  justify-content: center;
+  max-width: 100%;
+  padding: 1rem;
+  margin: 0 0.27rem;
+}
+
+.productInfoContainer {
+  max-width: 100%;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1.3fr;
+  text-align: left;
+  margin: 0 0.86rem;
+  padding: 0rem;
+}
+
+.productInfo {
+  display: grid;
+  max-width: 100%;
+  align-items: center;
+  border: 0.09rem solid black;
+  margin: 0.35rem 0.5rem;
+  padding: 0.2rem;
 }
