@@ -40,10 +40,9 @@ describe("ProductPage", () => {
   });
 
   test("WHEN the user navigates to the last page of the Products page, THEN next button of the pagination control will be disabled", () => {
-    const previousPageButton = screen.getByRole("button", {
-      name: "Previous page",
-    });
-    expect(previousPageButton).toBeDisabled();
+    const nextPageButton = screen.getByRole("button", { name: "Next page" });
+    userEvent.click(nextPageButton);
+    expect(nextPageButton).toBeDisabled();
   });
 
   test("WHEN a user goes to the Products page, THEN the current page will be highlighted in the pagination control", () => {

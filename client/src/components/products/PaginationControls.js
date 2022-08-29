@@ -10,6 +10,8 @@ const PaginationControls = ({
   setPage,
   currentPage,
   totalPages,
+  // onPrev,
+  // onNext,
   itemsPerPage,
   totalItems,
 }) => {
