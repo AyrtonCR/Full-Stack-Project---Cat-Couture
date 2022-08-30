@@ -16,6 +16,7 @@ code {
   box-sizing: border-box;
 }
 .main-content {
+  display: grid;
   flex-grow: 2;
   padding: 0;
 }
@@ -48,4 +49,10 @@ code {
 }
 .right-align {
   text-align: right;
+}
+
+@media only screen and (min-width: 70rem) {
+  .main-content {
+    grid-template-columns: 1fr 1fr;
+  }
 }

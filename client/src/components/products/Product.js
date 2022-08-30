@@ -14,17 +14,16 @@ const Product = ({
   return (
     <li className={styles.product} key={id}>
       <div className={styles.card}>
-        <div>
-          <div className={styles.imageContainer}>
-            <div className={styles.badgePostioner}>
-              {discountValue && discountType && (
-                <DiscountBadge
-                  className={styles.badge}
-                  discountValue={discountValue}
-                  discountType={discountType}
-                />
-              )}
-            </div>
+        <div className={styles.imageContainer}>
+          <div className={styles.borderPositioner}>
+            {discountValue && discountType && (
+              <DiscountBadge
+                className={styles.badge}
+                discountValue={discountValue}
+                discountType={discountType}
+              />
+            )}
+
             {imageName ? (
               <img
                 src={`./img/${imageName}`}
