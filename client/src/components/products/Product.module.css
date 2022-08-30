@@ -8,7 +8,7 @@
 }
 .badge {
   border: 0.09rem solid black;
-  background-color: rgb(245, 210, 81);
+  background-color: rgb(249, 189, 61);
   box-shadow: 0rem 0.05rem 0.5rem -0.05rem black;
   opacity: 0.9;
   border-radius: 2rem;
@@ -91,4 +91,7 @@
   .badge {
     left: 23.1rem;
   }
+}
+
+@media only screen and (min-width: 70rem) {
 }
