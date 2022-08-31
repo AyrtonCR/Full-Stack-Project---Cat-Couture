@@ -20,3 +20,9 @@
     margin: 0 20rem;
   }
 }
+
+@media only screen and (min-width: 125rem) {
+  .main-content {
+    margin: 0 25rem;
+  }
+}
