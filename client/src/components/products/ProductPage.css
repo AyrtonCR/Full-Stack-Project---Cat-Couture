@@ -1,6 +1,22 @@
+.main-content {
+  display: grid;
+  grid-template-columns: 1fr;
+}
 @media only screen and (min-width: 70rem) {
   .main-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media only screen and (min-width: 90rem) {
+  .main-content {
+    margin: 0 8rem;
+  }
+}
+
+@media only screen and (min-width: 115rem) {
+  .main-content {
+    margin: 0 20rem;
   }
 }
