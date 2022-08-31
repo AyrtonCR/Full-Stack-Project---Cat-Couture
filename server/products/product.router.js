@@ -10,18 +10,15 @@ const queryParamsSchema = Joi.object().keys({
   limit: Joi.number().integer().min(1),
 });
 
-
 router.get(
   "/",
   queryParamValidationMiddleware(queryParamsSchema),
   async (req, res, next) => {
-    
     try {
       const { limit, page } = req.query;
 
-      const safeLimit = Boolean(limit) ? parseInt(limit) : 10;
-      const safePage = Boolean(parseInt(page)) ? parseInt(page) : 1;
-
+      const safeLimit = limit ? parseInt(limit) : 10;
+      const safePage = parseInt(page) ? parseInt(page) : 1;
 
       // if (typeof safeLimit !== "number") {
       //   res.sendStatus(400);
