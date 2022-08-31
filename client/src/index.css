@@ -16,11 +16,12 @@ code {
   box-sizing: border-box;
 }
 .main-content {
+  max-width: 100%;
+  display: grid;
   flex-grow: 2;
+  padding: 0;
 }
-.main-layout > * {
-  max-width: 1344px;
-}
+
 .narrow-layout > * {
   max-width: 627px;
 }
@@ -39,7 +40,10 @@ code {
 }
 @media only screen and (min-width: 672px) {
   .half-width {
-    max-width: 672px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
   }
 }
 .left-align {

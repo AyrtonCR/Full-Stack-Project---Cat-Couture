@@ -1,3 +1,4 @@
+import dStyles from "./DashboardPage.module.css";
 import { useEffect, useState } from "react";
 import api from "../../api";
 import Loader from "../Loader";
@@ -52,19 +53,23 @@ const DashboardPage = () => {
     fetchData();
 
     return () => abortController.abort();
-  }, []);
+  }, [getAccessTokenSilently]);
 
   return (
-    <main className="narrow-layout main-content section-padding page-padding">
-      <div>
-        <h2>Dashboard</h2>
+    <main className={dStyles.mainDashboard}>
+      <div className={dStyles.titleContainer}>
+        <h2 className={dStyles.title}>Dashboard</h2>
+      </div>
+      <div className={dStyles.mainDiv}>
         {loading && <Loader />}
         {error && <ErrorMessage message={errorMessage} />}
         {categoryReports.length > 0 && (
-          <CategoriesReport
-            reportData={categoryReports}
-            className="half-width section-padding"
-          />
+          <>
+            <CategoriesReport
+              reportData={categoryReports}
+              className="half-width section-padding"
+            />
+          </>
         )}
         {discountReports.length > 0 && (
           <DiscountsReport

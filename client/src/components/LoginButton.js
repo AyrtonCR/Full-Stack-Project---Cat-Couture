@@ -1,3 +1,4 @@
+import styles from "./LoginButton.module.css";
 import { useAuth0 } from "@auth0/auth0-react";
 import Loader from "./Loader";
 
@@ -14,13 +15,20 @@ const LoginButton = () => {
 
   if (isAuthenticated) {
     return (
-      <button onClick={() => logout({ returnTo: window.location.origin })}>
+      <button
+        className={styles.button}
+        onClick={() => logout({ returnTo: window.location.origin })}
+      >
         Log Out
       </button>
     );
   }
 
-  return <button onClick={() => loginWithRedirect()}>Log In</button>;
+  return (
+    <button className={styles.button} onClick={() => loginWithRedirect()}>
+      Log In
+    </button>
+  );
 };
 
 export default LoginButton;

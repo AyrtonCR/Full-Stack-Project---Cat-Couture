@@ -1,31 +1,27 @@
-import Table from "./Table";
-import TableCell from "./TableCell";
-import TableHeaderCell from "./TableHeaderCell";
-
+import dStyles from "./DashboardPage.module.css";
 const DiscountsReport = ({ reportData, className }) => {
   return (
     <div className={className}>
-      <h3>Discounts Report</h3>
-      <Table>
-        <thead>
-          <tr className="left-align">
-            <TableHeaderCell>Discount Type</TableHeaderCell>
-            <TableHeaderCell>Total Products</TableHeaderCell>
-          </tr>
-        </thead>
-        <tbody>
-          {reportData.map((discount, index) => (
-            <tr key={index}>
-              <TableCell className="left-align">
-                {discount.discountType || "No discount"}
-              </TableCell>
-              <TableCell className="right-align">
-                {discount.totalProducts}
-              </TableCell>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
+      <div className={dStyles.categoriesContainer}>
+        <h3 className={dStyles.subTitle}>Discounts Report</h3>
+        <div className={dStyles.categoriesGridContainer}>
+          <div className={dStyles.categoriesGrid}>
+            <div className={dStyles.categoriesItem}>
+              {reportData.map((discount, index) => (
+                <li className={dStyles.singleItem} key={index}>
+                  <p className={dStyles.itemNumber}>{discount.totalProducts}</p>
+                  <p className={dStyles.itemText}>
+                    Items have{" "}
+                    <span className={dStyles.wordHighlighter2}>
+                      {discount.discountType || "no discount"}
+                    </span>
+                  </p>
+                </li>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
