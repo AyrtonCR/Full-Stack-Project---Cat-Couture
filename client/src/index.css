@@ -21,8 +21,7 @@ code {
   flex-grow: 2;
   padding: 0;
 }
-.main-layout > * {
-}
+
 .narrow-layout > * {
   max-width: 627px;
 }

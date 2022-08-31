@@ -1,4 +1,3 @@
-import styles from "../products/Product.module.css";
 import dStyles from "./DashboardPage.module.css";
 import { useEffect, useState } from "react";
 import api from "../../api";
@@ -59,7 +58,7 @@ const DashboardPage = () => {
   return (
     <main className={dStyles.mainDashboard}>
       <div className={dStyles.titleContainer}>
-        <h2 class={dStyles.title}>Dashboard</h2>
+        <h2 className={dStyles.title}>Dashboard</h2>
       </div>
       <div className={dStyles.mainDiv}>
         {loading && <Loader />}
