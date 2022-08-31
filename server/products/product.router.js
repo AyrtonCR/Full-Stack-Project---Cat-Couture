@@ -6,8 +6,8 @@ const queryParamValidationMiddleware = require("../middleware/queryParamValidati
 const productRepository = require("./product.repository");
 
 const queryParamsSchema = Joi.object().keys({
-  page: Joi.number().integer().min(1),
-  limit: Joi.number().integer().min(1),
+  page: Joi.number().integer().min(1).max(10),
+  limit: Joi.number().integer().min(10).max(10),
 });
 
 router.get(
@@ -19,11 +19,6 @@ router.get(
 
       const safeLimit = limit ? parseInt(limit) : 10;
       const safePage = parseInt(page) ? parseInt(page) : 1;
-
-      // if (typeof safeLimit !== "number") {
-      //   res.sendStatus(400);
-      // }
-
       const totalProducts = await productRepository.getTotalProducts();
       const products = await productRepository.getProducts(safeLimit, safePage);
 
