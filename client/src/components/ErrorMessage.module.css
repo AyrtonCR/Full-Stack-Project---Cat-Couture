@@ -1,5 +1,11 @@
 .errorMessage {
-  padding: 0.5rem;
+  border: 0.1rem solid black;
+  margin: 2rem;
+  padding: 1.5rem;
   color: #ffffff;
-  background-color: #a60e0e;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+  color: black;
+  background-color: rgb(249, 192, 36);
 }
