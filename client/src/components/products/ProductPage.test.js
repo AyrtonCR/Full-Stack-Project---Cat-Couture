@@ -56,11 +56,5 @@ describe("ProductPage", () => {
     expect(previousPageButton).toBeEnabled();
     expect(nextPageButton).toBeDisabled();
     expect(pageDisplay.textContent).toBe("Page 2 of 2");
-    // const pageDisplay = screen.queryByText(/page/i);
-    // expect(pageDisplay.textContent).toBe("Page 1 of 2");
-    // const nextPageButton = screen.getByRole("button", { name: "Next page" });
-    // userEvent.click(nextPageButton);
-    // expect(nextPageButton).toBeEnabled();
-    // expect(pageDisplay.textContent).toBe("Page 2 of 2");
   });
 });

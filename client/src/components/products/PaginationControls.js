@@ -5,16 +5,7 @@ import {
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 
-const PaginationControls = ({
-  page,
-  setPage,
-  currentPage,
-  totalPages,
-  // onPrev,
-  // onNext,
-  itemsPerPage,
-  totalItems,
-}) => {
+const PaginationControls = ({ page, setPage, currentPage, totalPages }) => {
   const prevDisabled = page > 1 ? false : true;
   const nextDisabled = page < totalPages ? false : true;
 

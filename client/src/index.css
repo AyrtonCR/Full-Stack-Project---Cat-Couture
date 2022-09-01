@@ -23,7 +23,7 @@ code {
 }
 
 .narrow-layout > * {
-  max-width: 627px;
+  max-width: 39.1875rem;
 }
 .main-layout > *,
 .narrow-layout > * {
@@ -38,7 +38,7 @@ code {
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
-@media only screen and (min-width: 672px) {
+@media only screen and (min-width: 39.1875rem) {
   .half-width {
     display: grid;
     align-items: center;
